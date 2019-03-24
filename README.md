@@ -127,7 +127,7 @@ module.exports = merge(common, {
     },
  ```
  # 重點中的重點來了！！！:fire:
- ###mini-css-extract-plugin 把文件超級縮小！
+ ### mini-css-extract-plugin 把文件超級縮小！
  
  *不需要在webpack.common.js里轉換 css 進去 style-loadder了
  *我們只需要 在prod格式里 用 **MiniCssExtractPlugin** 讀取css資料然後生成一個新的css文件
