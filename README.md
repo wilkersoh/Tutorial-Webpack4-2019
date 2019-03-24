@@ -183,8 +183,11 @@ const TerserPlugin = require("terser-webpack-plugin");
 ```
 -------
 
+
 ### 呼~只剩下html 還沒minify了。。 很簡單！！:rocket:
+
 <p>把htmlplugin在 minimizer裡面</p>
+
 ```javascript
  //webpack.prod.js
  const HtmlWebpackPlugin = require('html-webpack-plugin');
