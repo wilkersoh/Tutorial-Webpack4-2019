@@ -42,13 +42,11 @@ npm run start || npm run build
 
 <p>在webpack.config里增加<strong>[contentHash]</strong>讓系統記錄每次更換資料都會添加hast號碼，如果遊覽器已經這網頁下載后，過後還是一樣的hast號碼，它不不會再去浪費時間去下載它</p>
 ``` javascript
-
   entry: "./src/index.js",
     output: {
   filename: "main.<strong>[contentHash]</strong>.js",
         path: path.resolve(__dirname, "dist")
-    },
-    
+    },   
 ```
 
 ### 記得使用這個在你的index.html里就不需要寫script去讀取去的main.js文件了。需要使用HtmlWebpackPlugin讓它自動去生成script和hash
@@ -58,17 +56,12 @@ npm run start || npm run build
 <p>創建webpack.common.js && webpack.dev.js && webpack.prod.js 去規分使用它</p>
 
 ``` javascript
-
-
   //webpack.dev.js 調用webpack.common里module.exports后全部資料
   const common = require("./webpack.common");
-  <hr>
-  module.exports = merge(dev, { regular code })
-  
-  
+  module.exports = merge(dev, { regular code }) 
 ```
 
-<p>在package.json里也要注意更改webpack --config <strong>webpack.dev.js</strong>這就是說是執行webpack.dev的webpack資料。當執行開發者webpack它不會再index文件里生成main.[hash].js*也還沒對文件minify。這些都是核對以上的文件 看你怎樣去寫code在你的webpack里</p>
+*在package.json里也要注意更改webpack --config <strong>webpack.dev.js</strong>這就是說是執行webpack.dev的webpack資料。當執行開發者webpack它不會再index文件里生成main.[hash].js*也還沒對文件minify。這些都是核對以上的文件 看你怎樣去寫code在你的webpack里
 
 
 ### html-loader && file-loader
