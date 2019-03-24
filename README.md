@@ -17,6 +17,7 @@ npm run start || npm run build
  * file-loader
  * clean-webpack-plugin
  * mini-css-extract-plugin
+ * optimize-css-assets-webpack-plugin
  
  
 
@@ -126,7 +127,54 @@ module.exports = merge(common, {
     },
  ```
  # 重點中的重點來了！！！:fire:
+ ###mini-css-extract-plugin 把文件超級縮小！
  
+ *不需要在webpack.common.js里轉換 css 進去 style-loadder了
+ *我們只需要 在prod格式里 用 **MiniCssExtractPlugin** 讀取css資料然後生成一個新的css文件
+ ``` javascript
+ // webpack.prod.js
+ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+     plugins: [ 
+        new MiniCssExtractPlugin({ filename: "[name].[contentHash].css"}), 
+        new cleanWebpackPlugin()
+    ],
+  module: {
+     rules: [{
+         test: /\.scss$/,
+         use: [
+             MiniCssExtractPlugin.loader, // 3. 提取css into file
+             "css-loader", // 2. second run this
+             "sass-loader" // 1. run first
+         ],
+     }]
+ },
+    
+ ```
+ ### optimize-css-assets-webpack-plugin
+ *minify the huge CSS ***放在module上面還是下面都沒問題~! 
+ ``` javascript
+     optimization: {
+        minimizer: [
+            new OptimizeCssAssetsPlugin()
+    ]},
+```
+<p>但是 當我們使用這個optimize plugin它會影響到 之前設置的javascript minify</p>
+<p>造成js 變回去dev格式 然後css minify了</p>
+要怎樣解決這個問題呢
+<p>也得到bash的回應 文件夾容量太大了</p>
+
+``` bash
+Assets:
+  vender.e3842b15fa4de79b24a4.bundle.js (484 KiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This
+can impact web performance.
+```
+
+
+ 
+ 
+
  
  
 
