@@ -39,7 +39,6 @@ npm run start || npm run build
 
 ```
 
-
 <p>在webpack.config里增加<strong>[contentHash]</strong>讓系統記錄每次更換資料都會添加hast號碼，如果遊覽器已經這網頁下載后，過後還是一樣的hast號碼，它不不會再去浪費時間去下載它</p>
 
 ``` javascript
@@ -50,6 +49,7 @@ npm run start || npm run build
     },  
  ```
 
+----------------
 ### 記得使用這個在你的index.html里就不需要寫script去讀取去的main.js文件了。需要使用HtmlWebpackPlugin讓它自動去生成script和hash
 <p>在webpack.config的index.html資料里不需要bootstrap的資料了, 有bootstrap去幫他自己去生成</p>
 
@@ -70,5 +70,58 @@ npm run start || npm run build
 <p>使用html-loader。每當遇到img資料時,它就會去要求網頁去讀那張img資料 而不會明明設置的路線都正確但卻讀取不到的情況出現</p>
 <p>還有還有記得還要在webpack里設置file-loader 那樣才算 大功告成哦</p>
 
+**注意轉換照片 options里的 【hast】 和 output for bundle file的【contentHash】 不要搞混淆了
+``` javascript
+            {
+                test:/\.(svg|png|jpg|gif)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[hash][ext]",
+                        outputPath: "imgs" // create a imgs folder in dist folder
+                    }
+                }
+            }
+```
+``` javascript
+module.exports = merge(common, {
+    mode: "production",
+    output: {
+        filename: "[name].[contentHash].bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+    plugins: [ new cleanWebpackPlugin()]
+});
+```
+
+
 ### clean-webpack-plugin
 <p>這個工具能讓你之前的hash被保留下來沒使用到的被clean掉哦</p>
+
+----------
+### 你也可以使用多个entry file然后创建 不同的bundle
+
+``` javascript
+    //main 和 vender是被创建出来的bundle file的名字哦
+    entry: {
+        main: "./src/index.js",
+        vender: "./src/vender.js"
+    },
+ ```
+ ``` javascript
+ //webpack.dev.js 因为创建不同的bundle文件 所以需要[name], 讓自動拿去文件名才不會混淆
+     output: {
+        filename: "[name].bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+ ```
+ 
+ ``` javascript
+     //webpack.prod.js 
+     output: {
+        filename: "[name].[contentHash].bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+ ```
+
+ 
