@@ -160,8 +160,8 @@ module.exports = merge(common, {
 ```
 <p>但是 當我們使用這個optimize plugin它會影響到 之前設置的javascript minify</p>
 <p>造成js 變回去dev格式 然後css minify了</p>
-要怎樣解決這個問題呢
-<p>也得到bash的回應 文件夾容量太大了</p>
+ ### 要怎樣解決這個問題呢
+ ### 也得到bash的回應 文件夾容量太大了
 
 ``` bash
 Assets:
@@ -170,6 +170,39 @@ Assets:
 WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This
 can impact web performance.
 ```
+<p>可以使用terser-webpack-plugin去解決js也能minify的這個問題</p>
+<p>terser不必下載它 它已經在node-mudule裡面了~</p>
+``` javascript
+const TerserPlugin = require("terser-webpack-plugin");
+
+    optimization: {
+        minimizer: [
+            new OptimizeCssAssetsPlugin(),
+            new TerserPlugin()
+    ]},
+```
+-------
+
+### 呼~只剩下html 還沒minify了。。 很簡單！！:rocket:
+<p>把htmlplugin在 minimizer裡面</p>
+```javascript
+ //webpack.prod.js
+ const HtmlWebpackPlugin = require('html-webpack-plugin');
+    optimization: {
+        minimizer: [
+            new OptimizeCssAssetsPlugin(),
+            new TerserPlugin(),
+            new HtmlWebpackPlugin({
+                template: "./src/index.html",
+                minify: {
+                    removeAttributeQuotes: true,
+                    collapseWhitespace: true,
+                    removeComments: true
+                }
+            })
+    ]},
+```
+
 
 
  
