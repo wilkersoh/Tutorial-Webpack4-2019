@@ -41,13 +41,6 @@ npm run start || npm run build
 
 
 <p>在webpack.config里增加<strong>[contentHash]</strong>讓系統記錄每次更換資料都會添加hast號碼，如果遊覽器已經這網頁下載后，過後還是一樣的hast號碼，它不不會再去浪費時間去下載它</p>
-``` javascript
-  entry: "./src/index.js",
-    output: {
-  filename: "main.<strong>[contentHash]</strong>.js",
-        path: path.resolve(__dirname, "dist")
-    },   
-```
 
 ### 記得使用這個在你的index.html里就不需要寫script去讀取去的main.js文件了。需要使用HtmlWebpackPlugin讓它自動去生成script和hash
 <p>在webpack.config的index.html資料里不需要bootstrap的資料了, 有bootstrap去幫他自己去生成</p>
