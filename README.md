@@ -1,4 +1,3 @@
-# Note-Webpack-2019
 
 # 學習Webpack 2019
 # 遇見太多坑在webpack了 所以才生成這支資料。
@@ -17,6 +16,7 @@ npm run start || npm run build
  * html-loader
  * file-loader
  * clean-webpack-plugin
+ * mini-css-extract-plugin
  
  
 
@@ -71,6 +71,7 @@ npm run start || npm run build
 <p>還有還有記得還要在webpack里設置file-loader 那樣才算 大功告成哦</p>
 
 **注意轉換照片 options里的 【hast】 和 output for bundle file的【contentHash】 不要搞混淆了
+
 ``` javascript
             {
                 test:/\.(svg|png|jpg|gif)$/,
@@ -99,6 +100,7 @@ module.exports = merge(common, {
 <p>這個工具能讓你之前的hash被保留下來沒使用到的被clean掉哦</p>
 
 ----------
+
 ### 你也可以使用多个entry file然后创建 不同的bundle
 
 ``` javascript
@@ -109,7 +111,7 @@ module.exports = merge(common, {
     },
  ```
  ``` javascript
- //webpack.dev.js 因为创建不同的bundle文件 所以需要[name], 讓自動拿去文件名才不會混淆
+     //webpack.dev.js 因为创建不同的bundle文件 所以需要[name], 讓自動拿去文件名才不會混淆
      output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist")
@@ -123,5 +125,9 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, "dist")
     },
  ```
+ # 重點中的重點來了！！！:fire:
+ 
+ 
+ 
 
  
