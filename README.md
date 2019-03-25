@@ -5,19 +5,20 @@
 這裡會分享一些基礎Webpack使用功能還有坑。。。。
 npm run start || npm run build
 
- * webpack
- * webpack-cli
- * style-loader
- * css-loader
- * scss-loader
- * HtmlWebpackPlugin
- * webpack-merge
- * webpack-dev-server
- * html-loader
- * file-loader
- * clean-webpack-plugin
- * mini-css-extract-plugin
- * optimize-css-assets-webpack-plugin
+ * webpack ---- 4.29.6
+ * webpack-cli ---- 3.3.0
+ * style-loader ---- 0.23.1
+ * css-loader ---- 2.1.1
+ * sass-loader ---- 7.1.0
+ * node-sass ---- 4.11.0
+ * HtmlWebpackPlugin ---- 3.2.0
+ * webpack-merge ---- 4.2.1
+ * webpack-dev-server ---- 3.2.1
+ * html-loader ---- 0.5.5
+ * file-loader ---- 3.0.1
+ * clean-webpack-plugin ---- 2.0.1
+ * mini-css-extract-plugin ---- 0.5.0
+ * optimize-css-assets-webpack-plugin ---- 5.0.1
  
  
 
@@ -173,6 +174,7 @@ can impact web performance.
 ```
 <p>可以使用terser-webpack-plugin去解決js也能minify的這個問題</p>
 <p>terser不必下載它 它已經在node-mudule裡面了~</p>
+
 ``` javascript
 const TerserPlugin = require("terser-webpack-plugin");
 
@@ -192,6 +194,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 ```javascript
  //webpack.prod.js
  const HtmlWebpackPlugin = require('html-webpack-plugin');
+ const TerserPlugin = require("terser-webpack-plugin");
+ 
     optimization: {
         minimizer: [
             new OptimizeCssAssetsPlugin(),
