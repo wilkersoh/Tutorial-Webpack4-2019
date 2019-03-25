@@ -131,6 +131,7 @@ module.exports = merge(common, {
  
  *不需要在webpack.common.js里轉換 css 進去 style-loadder了
  *我們只需要 在prod格式里 用 **MiniCssExtractPlugin** 讀取css資料然後生成一個新的css文件
+ ### 这个也会解决当你刷新网页 显示的500ms的unstyle dom， 如果使用style-loader那么他就会先下载dom才会读到下面的 style css。使用mini的话 它会把css 移去file先
  ``` javascript
  // webpack.prod.js
  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
