@@ -1,5 +1,5 @@
 
-# 學習Webpack 2019
+# 學習Webpack 4 2019
 # 遇見太多坑在webpack了 所以才生成這支資料。
 你以為webpack只是簡簡單單打包script罷了嗎！那你就錯了，之前我也認為就那些簡單打包和babel組合。就以為已經入門webpack了
 這裡會分享一些基礎Webpack使用功能還有坑。。。。
