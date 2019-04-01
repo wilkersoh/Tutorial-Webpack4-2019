@@ -53,9 +53,9 @@ npm run start || npm run build
 
 ----------------
 ### 記得使用這個在你的index.html里就不需要寫script去讀取去的main.js文件了。需要使用HtmlWebpackPlugin讓它自動去生成script和hash
-<p>在webpack.config的index.html資料里不需要bootstrap的資料了, 有bootstrap去幫他自己去生成</p>
+<p>注意哦，在webpack.config的index.html資料里不需要bootstrap的資料了, 有bootstrap去幫他自己自動去生成</p>
 
-##### 想對webpack拆分到更加清楚的話可以使用webpack-merge
+##### 想對webpack拆分到更加清楚的話可以使用webpack-merge 這是更有效率的方法
 <p>創建webpack.common.js && webpack.dev.js && webpack.prod.js 去規分使用它</p>
 
 ``` javascript
@@ -153,7 +153,7 @@ module.exports = merge(common, {
     
  ```
  ### optimize-css-assets-webpack-plugin
- *minify the huge CSS ***放在module上面還是下面都沒問題~! 
+ minify the huge CSS ***放在module上面還是下面都沒問題~! 
  ``` javascript
      optimization: {
         minimizer: [
