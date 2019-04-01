@@ -162,8 +162,8 @@ module.exports = merge(common, {
 ```
 <p>但是 當我們使用這個optimize plugin它會影響到 之前設置的javascript minify</p>
 <p>造成js 變回去dev格式 然後css minify了</p>
- ### 要怎樣解決這個問題呢
- ### 也得到bash的回應 文件夾容量太大了
+### 要怎樣解決這個問題呢
+也得到bash的回應 文件夾容量太大了
 
 ``` bash
 Assets:
