@@ -8,9 +8,9 @@
 * babel-loader" ---- 8.0.5
 * @babel/polyfill -- 7.2.5
 <p>babel只负责语法转换，比如将ES6的语法转换成ES5。但如果有些对象、方法，浏览器本身不支持</p>
-1. 全局对象：Promise、WeakMap 等。
-2. 全局静态函数：Array.from、Object.assign 等。
-3. 实例方法：比如 Array.prototype.includes 等。
+<p>1. 全局对象：Promise、WeakMap 等。</p>
+<p>2. 全局静态函数：Array.from、Object.assign 等。</p>
+<p>3. 实例方法：比如 Array.prototype.includes 等。</p>
 <p>在webpack里entry 和 output的概念， 他会通过preset-env 转换去ES5</p>
 ``` babelrc
 {
