@@ -12,7 +12,7 @@
 <p>2. 全局静态函数：Array.from、Object.assign 等。</p>
 <p>3. 实例方法：比如 Array.prototype.includes 等。</p>
 <p>在webpack里entry 和 output的概念， 他会通过preset-env 转换去ES5</p>
-``` babelrc
+``` javascript
 {
   "presets": [
     "@babel/preset-env"
