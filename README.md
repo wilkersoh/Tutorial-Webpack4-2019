@@ -1,6 +1,56 @@
 
 # 學習Webpack 4 2019
 # 遇見太多坑在webpack了 所以才生成這支資料。
+# babel && webpack Level 1
+* @babal/cli    ---- 7.2.3
+* @babel/core   ---- 7.4.0
+* @babel/preset-en - 7.4.2
+* babel-loader" ---- 8.0.5
+<p>在webpack里entry 和 output的概念， 他会通过preset-env 转换去ES5</p>
+``` babelrc
+{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+
+```
+<p>没有通过webpack，你需要在terminal里这样调用 babel的转换</p>
+``` bash 
+node_modules/.bin/babel before.js -o after.js
+```
+<p>结束后 他会生成一支after.js的ES5 代码</p>
+<p>使用webpack让它自动生成就好了</p>
+
+``` javascript
+// webpack.config.js
+module.exports = {
+  // @babel要放在前面
+  entry: ['@babel/polyfill, 'url of index.js'],
+  output: {
+    // output as a object value
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'url/bundle.js'
+  }
+  
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }，
+      {
+       test: another test  
+      }    
+    ]
+  }
+}
+```
+
+
 你以為webpack只是簡簡單單打包script罷了嗎！那你就錯了，之前我也認為就那些簡單打包和babel組合。就以為已經入門webpack了
 這裡會分享一些基礎Webpack使用功能還有坑。。。。
 npm run start || npm run build
