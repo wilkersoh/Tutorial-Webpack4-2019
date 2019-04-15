@@ -265,6 +265,17 @@ const TerserPlugin = require("terser-webpack-plugin");
     ]},
 ```
 
+### webpack-dev-server
+package.json里 --mode developement and -- mode production
+``` javascript
+//webpack.config.js
+devServer: {
+  contentBase: path.resolve(__dirname, 'dist'),
+  //也能指定地方
+  publicPath: '/assest/'
+}
+```
+
 
 
  
