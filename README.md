@@ -18,6 +18,7 @@
     "@babel/preset-env"
   ]
 }
+```
 
 ```
 <p>没有通过webpack，你需要在terminal里这样调用 babel的转换</p>
