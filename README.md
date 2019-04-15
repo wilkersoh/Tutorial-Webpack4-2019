@@ -13,8 +13,8 @@
 <p>3. 实例方法：比如 Array.prototype.includes 等。</p>
 <p>在webpack里entry 和 output的概念， 他会通过preset-env 转换去ES5</p>
 
-create an .babelrc
-<p>
+<p>create an .babelrc</p>
+<p>不要创建也没问题，在rules里面写也行(下面的options）</p>
 {
   "presets": [
     "@babel/preset-env"
@@ -46,7 +46,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node-modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                      presets: ['@babel/preset-env']
+                    }
                 }
             }
         ]
