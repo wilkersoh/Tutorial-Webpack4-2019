@@ -22,11 +22,13 @@
 }
 </p>
 
-```
+
 <p>没有通过webpack，你需要在terminal里这样调用 babel的转换</p>
-``` bash 
-node_modules/.bin/babel before.js -o after.js
-```
+
+``` bash
+ node_modules/.bin/babel before.js -o after.js
+ ```
+ 
 <p>结束后 他会生成一支after.js的ES5 代码</p>
 <p>使用webpack让它自动生成就好了</p>
 
